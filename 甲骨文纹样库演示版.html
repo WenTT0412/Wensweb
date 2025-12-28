@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>甲骨文纹样库 | 四季系列偏好收集</title>
+  <link rel="stylesheet" href="/Wenswebs/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary-red: #c3272b;
+      --primary-gold: #f9c926;
+      --primary-dark: #2c1810;
+      --primary-light: #f8f3e9;
+      --accent-pink: #e84393;
+      /* 春季粉色 */
+      --accent-green: #27ae60;
+      /* 夏季绿色 */
+      --accent-orange: #e67e22;
+      --accent-blue: #3498db;
+      /* 冬季蓝色 */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: linear-gradient(135deg, #fdf6e3 0%, #f8f3e9 100%);
+      color: var(--primary-dark);
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 200, 124, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(195, 39, 43, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 头部样式 */
+    header {
+      background: linear-gradient(to right, var(--primary-red), #a61b1f);
+      color: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "甲骨文纹样";
+      position: absolute;
+      font-size: 120px;
+      font-family: 'Ma Shan Zheng', cursive;
+      opacity: 0.05;
+      top: -20px;
+      left: 20px;
+      color: white;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary-gold);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-text h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* 横幅样式 */
+    .banner {
+      background: linear-gradient(rgba(44, 24, 16, 0.8), rgba(44, 24, 16, 0.9)), url('https://images.unsplash.com/photo-1547825407-12d434919a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 5px solid var(--primary-gold);
+    }
+
+    .banner h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-family: 'Ma Shan Zheng', cursive;
+      color: var(--primary-gold);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+
+    /* 四季滚动展示 */
+    .seasons-scroll {
+      margin: 3rem 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title h3 {
+      font-size: 2.2rem;
+      color: var(--primary-red);
+      background-color: white;
+      padding: 0 2rem;
+      z-index: 1;
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--primary-red), transparent);
+      z-index: 0;
+    }
+
+    .scroll-container {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--primary-red);
+    }
+
+    .scroll-content {
+      display: flex;
+      height: 100%;
+      animation: scroll 40s linear infinite;
+    }
+
+    .scroll-item {
+      min-width: 300px;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-right: 1px dashed #e0d6c2;
+    }
+
+    .scroll-item.spring {
+      background-color: rgba(232, 67, 147, 0.05);
+      /* 春季粉色背景 */
+    }
+
+    .scroll-item.summer {
+      background-color: rgba(39, 174, 96, 0.05);
+      /* 夏季绿色背景 */
+    }
+
+    .scroll-item.autumn {
+      background-color: rgba(230, 126, 34, 0.05);
+    }
+
+    .scroll-item.winter {
+      background-color: rgba(52, 152, 219, 0.05);
+      /* 冬季蓝色背景 */
+    }
+
+    .oracle-char {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+
+    .spring-char {
+      color: var(--accent-pink);
+      /* 春季粉色字符 */
+    }
+
+    .summer-char {
+      color: var(--accent-green);
+      /* 夏季绿色字符 */
+    }
+
+    .autumn-char {
+      color: var(--accent-orange);
+    }
+
+    .winter-char {
+      color: var(--accent-blue);
+      /* 冬季蓝色字符 */
+    }
+
+    .product-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border: 3px solid;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .spring-img {
+      border-color: var(--accent-pink);
+      /* 春季粉色边框 */
+    }
+
+    .summer-img {
+      border-color: var(--accent-green);
+      /* 夏季绿色边框 */
+    }
+
+    .autumn-img {
+      border-color: var(--accent-orange);
+    }
+
+    .winter-img {
+      border-color: var(--accent-blue);
+      /* 冬季蓝色边框 */
+    }
+
+    .season-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .season-desc {
+      font-size: 0.9rem;
+      color: #666;
+      max-width: 250px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-1200px);
+      }
+    }
+
+    .scroll-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .scroll-btn {
+      background-color: var(--primary-red);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .scroll-btn:hover {
+      background-color: #a61b1f;
+      transform: translateY(-3px);
+    }
+
+    /* 中国风表格 */
+    .feedback-section {
+      margin: 4rem 0;
+    }
+
+    .chinese-table {
+      width: 100%;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--primary-red);
+    }
+
+    .table-header {
+      background: linear-gradient(to right, var(--primary-red), #a61b1f);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .table-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+
+    .table-header p {
+      opacity: 0.9;
+    }
+
+    .table-content {
+      padding: 2rem;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 3fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      border-bottom: 1px solid #e0d6c2;
+      align-items: center;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .season-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .season-small-char {
+      font-size: 3rem;
+      font-weight: bold;
+      font-family: 'Ma Shan Zheng', cursive;
+      margin-bottom: 0.5rem;
+    }
+
+    .season-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .season-pinyin {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .oracle-preview {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .preview-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid;
+    }
+
+    .spring-preview {
+      border-color: var(--accent-pink);
+      /* 春季粉色边框 */
+    }
+
+    .summer-preview {
+      border-color: var(--accent-green);
+      /* 夏季绿色边框 */
+    }
+
+    .autumn-preview {
+      border-color: var(--accent-orange);
+    }
+
+    .winter-preview {
+      border-color: var(--accent-blue);
+      /* 冬季蓝色边框 */
+    }
+
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rating-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .rating-label {
+      font-weight: bold;
+      min-width: 80px;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 5px;
+    }
+
+    .rating-stars i {
+      font-size: 1.5rem;
+      color: #ddd;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .rating-stars i.active {
+      color: var(--primary-gold);
+    }
+
+    .preference-select {
+      padding: 8px 12px;
+      border: 1px solid #e0d6c2;
+      border-radius: 6px;
+      font-family: 'Noto Serif SC', serif;
+      background-color: #fdf9f3;
+      width: 100%;
+    }
+
+    .comment-box {
+      padding: 10px;
+      border: 1px solid #e0d6c2;
+      border-radius: 6px;
+      font-family: 'Noto Serif SC', serif;
+      background-color: #fdf9f3;
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .submit-section {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e0d6c2;
+    }
+
+    .submit-btn {
+      background: linear-gradient(to right, var(--primary-red), #a61b1f);
+      color: white;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(195, 39, 43, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(195, 39, 43, 0.4);
+    }
+
+    /* 页脚 */
+    footer {
+      background-color: var(--primary-dark);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-gold);
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+
+    .footer-section p {
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: var(--primary-red);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 992px) {
+      .table-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .season-header {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-container {
+        height: 350px;
+      }
+
+      .scroll-item {
+        min-width: 250px;
+      }
+
+      .banner h2 {
+        font-size: 2.2rem;
+      }
+
+      .section-title h3 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .scroll-container {
+        height: 300px;
+      }
+
+      .oracle-char {
+        font-size: 3.5rem;
+      }
+
+      .product-img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-scroll"></i>
+        </div>
+        <div class="logo-text">
+          <h1>甲骨文纹样库</h1>
+          <p>探索汉字之源 · 创新纹样设计</p>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#seasons">四季纹样</a>
+        <a href="#feedback">偏好收集</a>
+        <a href="#about">关于项目</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 横幅 -->
+  <section class="banner">
+    <div class="container">
+      <h2>四季甲骨文纹样偏好收集</h2>
+      <p>我们正在收集用户对春夏秋冬四季甲骨文纹样的偏好数据，您的反馈将帮助我们优化纹样设计，推动传统文化创新。</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- 四季滚动展示 -->
+    <section class="seasons-scroll" id="seasons">
+      <div class="section-title">
+        <h3>四季甲骨文纹样展示</h3>
+      </div>
+
+      <div class="scroll-container">
+        <div class="scroll-content">
+          <!-- 春季展示 -->
+          <div class="scroll-item spring">
+            <div class="oracle-char spring-char">春</div>
+            <img src="春甲骨文纹样.jpg" alt="春甲骨文纹样" class="product-img spring-img">
+            <div class="season-name">春季纹样</div>
+            <p class="season-desc">万物复苏，生机勃勃的春季甲骨文纹样 o</p>
+          </div>
+
+          <!-- 夏季展示 -->
+          <div class="scroll-item summer">
+            <div class="oracle-char summer-char">夏</div>
+            <img src="夏甲骨文纹样.jpg" alt="夏甲骨文纹样" class="product-img summer-img">
+            <div class="season-name">夏季纹样</div>
+            <p class="season-desc">烈日炎炎，万物繁茂的夏季甲骨文纹样 o</p>
+          </div>
+
+          <!-- 秋季展示 -->
+          <div class="scroll-item autumn">
+            <div class="oracle-char autumn-char">秋</div>
+            <img src="秋甲骨文纹样.jpg" alt="秋甲骨文纹样" class="product-img autumn-img">
+            <div class="season-name">秋季纹样</div>
+            <p class="season-desc">丰收时节，金黄灿烂的秋季甲骨文纹样 o</p>
+          </div>
+
+          <!-- 冬季展示 -->
+          <div class="scroll-item winter">
+            <div class="oracle-char winter-char">冬</div>
+            <img src="冬甲骨文纹样.jpg" alt="冬甲骨文纹样" class="product-img winter-img">
+            <div class="season-name">冬季纹样</div>
+            <p class="season-desc">银装素裹，静谧祥和的冬季甲骨文纹样 o</p>
+          </div>
+
+          <!-- 重复一次以实现无缝滚动 -->
+          <div class="scroll-item spring">
+            <div class="oracle-char spring-char">春</div>
+            <img src="春甲骨文纹样.jpg" alt="春甲骨文纹样" class="product-img spring-img">
+            <div class="season-name">春季纹样</div>
+            <p class="season-desc">万物复苏，生机勃勃的春季甲骨文纹样 o/p>
+          </div>
+
+          <div class="scroll-item summer">
+            <div class="oracle-char summer-char">夏</div>
+            <img src="夏甲骨文纹样.jpg" alt="夏甲骨文纹样" class="product-img summer-img">
+            <div class="season-name">夏季纹样</div>
+            <p class="season-desc">烈日炎炎，万物繁茂的夏季甲骨文纹样 o</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-controls">
+        <button class="scroll-btn" id="pause-btn"><i class="fas fa-pause"></i></button>
+        <button class="scroll-btn" id="play-btn"><i class="fas fa-play"></i></button>
+        <button class="scroll-btn" id="slow-btn"><i class="fas fa-tachometer-alt"></i></button>
+        <button class="scroll-btn" id="fast-btn"><i class="fas fa-tachometer-alt-fast"></i></button>
+      </div>
+    </section>
+
+    <!-- 中国风反馈表格 -->
+    <section class="feedback-section" id="feedback">
+      <div class="section-title">
+        <h3>四季纹样偏好收集表</h3>
+      </div>
+
+      <div class="chinese-table">
+        <div class="table-header">
+          <h3>请评价您对四季甲骨文纹样的偏好</h3>
+          <p>您的反馈将帮助我们优化纹样设计，推动传统文化创新</p>
+        </div>
+
+        <div class="table-content">
+          <!-- 春季反馈行 -->
+          <div class="table-row">
+            <div class="season-header">
+              <div class="season-small-char spring-char">春</div>
+              <div class="season-title">春季纹样</div>
+              <div class="season-pinyin">chūn · 万物复苏</div>
+            </div>
+
+            <div class="oracle-preview">
+              <img src="春甲骨文纹样.jpg" alt="春甲骨文纹样" class="preview-img spring-preview">
+              <img src="春纹样产品.jpg" alt="春纹样产品" class="preview-img spring-preview">
+            </div>
+
+            <div class="feedback-form">
+              <div class="rating-section">
+                <span class="rating-label">喜爱程度:</span>
+                <div class="rating-stars" data-season="spring">
+                  <i class="far fa-star" data-rating="1"></i>
+                  <i class="far fa-star" data-rating="2"></i>
+                  <i class="far fa-star" data-rating="3"></i>
+                  <i class="far fa-star" data-rating="4"></i>
+                  <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <span class="rating-value">0/5</span>
+              </div>
+
+              <select class="preference-select" id="spring-preference">
+                <option value="">请选择应用场景偏好</option>
+                <option value="clothing">服饰设计</option>
+                <option value="ceramic">陶瓷制品</option>
+                <option value="packaging">产品包装</option>
+                <option value="decoration">家居装饰</option>
+                <option value="digital">数字媒体</option>
+              </select>
+
+              <textarea class="comment-box" placeholder="请留下您对春季纹样的具体建议..." rows="3" id="spring-comment"></textarea>
+            </div>
+          </div>
+
+          <!-- 夏季反馈行 -->
+          <div class="table-row">
+            <div class="season-header">
+              <div class="season-small-char summer-char">夏</div>
+              <div class="season-title">夏季纹样</div>
+              <div class="season-pinyin">xià · 烈日炎炎</div>
+            </div>
+
+            <div class="oracle-preview">
+              <img src="夏甲骨文纹样.jpg" alt="夏甲骨文纹样" class="preview-img summer-preview">
+            </div>
+
+            <div class="feedback-form">
+              <div class="rating-section">
+                <span class="rating-label">喜爱程度:</span>
+                <div class="rating-stars" data-season="summer">
+                  <i class="far fa-star" data-rating="1"></i>
+                  <i class="far fa-star" data-rating="2"></i>
+                  <i class="far fa-star" data-rating="3"></i>
+                  <i class="far fa-star" data-rating="4"></i>
+                  <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <span class="rating-value">0/5</span>
+              </div>
+
+              <select class="preference-select" id="summer-preference">
+                <option value="">请选择应用场景偏好</option>
+                <option value="clothing">服饰设计</option>
+                <option value="ceramic">陶瓷制品</option>
+                <option value="packaging">产品包装</option>
+                <option value="decoration">家居装饰</option>
+                <option value="digital">数字媒体</option>
+              </select>
+
+              <textarea class="comment-box" placeholder="请留下您对夏季纹样的具体建议..." rows="3" id="summer-comment"></textarea>
+            </div>
+          </div>
+
+          <!-- 秋季反馈行 -->
+          <div class="table-row">
+            <div class="season-header">
+              <div class="season-small-char autumn-char">秋</div>
+              <div class="season-title">秋季纹样</div>
+              <div class="season-pinyin">qiū · 丰收时节</div>
+            </div>
+
+            <div class="oracle-preview">
+              <img src="秋甲骨文纹样.jpg" alt="秋甲骨文纹样" class="preview-img autumn-preview">
+            </div>
+
+            <div class="feedback-form">
+              <div class="rating-section">
+                <span class="rating-label">喜爱程度:</span>
+                <div class="rating-stars" data-season="autumn">
+                  <i class="far fa-star" data-rating="1"></i>
+                  <i class="far fa-star" data-rating="2"></i>
+                  <i class="far fa-star" data-rating="3"></i>
+                  <i class="far fa-star" data-rating="4"></i>
+                  <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <span class="rating-value">0/5</span>
+              </div>
+
+              <select class="preference-select" id="autumn-preference">
+                <option value="">请选择应用场景偏好</option>
+                <option value="clothing">服饰设计</option>
+                <option value="ceramic">陶瓷制品</option>
+                <option value="packaging">产品包装</option>
+                <option value="decoration">家居装饰</option>
+                <option value="digital">数字媒体</option>
+              </select>
+
+              <textarea class="comment-box" placeholder="请留下您对秋季纹样的具体建议..." rows="3" id="autumn-comment"></textarea>
+            </div>
+          </div>
+
+          <!-- 冬季反馈行 -->
+          <div class="table-row">
+            <div class="season-header">
+              <div class="season-small-char winter-char">冬</div>
+              <div class="season-title">冬季纹样</div>
+              <div class="season-pinyin">dōng · 银装素裹</div>
+            </div>
+
+            <div class="oracle-preview">
+              <img src="冬甲骨文纹样.jpg" alt="冬甲骨文纹样" class="preview-img winter-preview">
+            </div>
+
+            <div class="feedback-form">
+              <div class="rating-section">
+                <span class="rating-label">喜爱程度:</span>
+                <div class="rating-stars" data-season="winter">
+                  <i class="far fa-star" data-rating="1"></i>
+                  <i class="far fa-star" data-rating="2"></i>
+                  <i class="far fa-star" data-rating="3"></i>
+                  <i class="far fa-star" data-rating="4"></i>
+                  <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <span class="rating-value">0/5</span>
+              </div>
+
+              <select class="preference-select" id="winter-preference">
+                <option value="">请选择应用场景偏好</option>
+                <option value="clothing">服饰设计</option>
+                <option value="ceramic">陶瓷制品</option>
+                <option value="packaging">产品包装</option>
+                <option value="decoration">家居装饰</option>
+                <option value="digital">数字媒体</option>
+              </select>
+
+              <textarea class="comment-box" placeholder="请留下您对冬季纹样的具体建议..." rows="3" id="winter-comment"></textarea>
+            </div>
+          </div>
+
+          <div class="submit-section">
+            <button class="submit-btn" id="submit-feedback">
+              <i class="fas fa-paper-plane"></i> 提交我的偏好反馈
+            </button>
+            <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">感谢您为甲骨文纹样设计贡献宝贵意见！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer id="about">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>甲骨文纹样库项目</h4>
+          <p>智绘甲骨——数字化甲骨文纹样库与产业赋能生态</p>
+          <p>数据来源：《说文解字》《汉语大词典》</p>
+          <p>图片资源：团队独家设计、殷契文渊等公开数据库</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>项目目标</h4>
+          <p>收集用户对甲骨文纹样的偏好数据</p>
+          <p>优化纹样设计，推动传统文化创新</p>
+          <p>建立开放的甲骨文纹样设计库</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>联系我们</h4>
+          <p>邮箱：niuyiwen@stu.zzu.edu.cn</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-weibo"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 甲骨文纹样库项目团队. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 滚动动画控制
+      const scrollContent = document.querySelector('.scroll-content');
+      const pauseBtn = document.getElementById('pause-btn');
+      const playBtn = document.getElementById('play-btn');
+      const slowBtn = document.getElementById('slow-btn');
+      const fastBtn = document.getElementById('fast-btn');
+
+      let animationSpeed = 40; // 默认速度（秒）
+      let isPlaying = true;
+
+      // 更新动画速度
+      function updateAnimationSpeed() {
+        scrollContent.style.animationDuration = `${animationSpeed}s`;
+      }
+
+      // 暂停动画
+      pauseBtn.addEventListener('click', function () {
+        scrollContent.style.animationPlayState = 'paused';
+        isPlaying = false;
+        pauseBtn.disabled = true;
+        playBtn.disabled = false;
+      });
+
+      // 播放动画
+      playBtn.addEventListener('click', function () {
+        scrollContent.style.animationPlayState = 'running';
+        isPlaying = true;
+        pauseBtn.disabled = false;
+        playBtn.disabled = true;
+      });
+
+      // 减慢速度
+      slowBtn.addEventListener('click', function () {
+        animationSpeed += 10;
+        if (animationSpeed > 60) animationSpeed = 60;
+        updateAnimationSpeed();
+      });
+
+      // 加快速度
+      fastBtn.addEventListener('click', function () {
+        animationSpeed -= 10;
+        if (animationSpeed < 10) animationSpeed = 10;
+        updateAnimationSpeed();
+      });
+
+      // 初始化按钮状态
+      pauseBtn.disabled = false;
+      playBtn.disabled = true;
+
+      // 星级评分功能
+      const allStars = document.querySelectorAll('.rating-stars i');
+
+      allStars.forEach(star => {
+        star.addEventListener('mouseover', function () {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          const starContainer = this.parentElement;
+          const season = starContainer.getAttribute('data-season');
+
+          // 高亮当前和之前的星星
+          starContainer.querySelectorAll('i').forEach((s, index) => {
+            if (index < rating) {
+              s.classList.add('active');
+              s.classList.remove('far');
+              s.classList.add('fas');
+            } else {
+              s.classList.remove('active');
+              s.classList.remove('fas');
+              s.classList.add('far');
+            }
+          });
+        });
+
+        star.addEventListener('mouseout', function () {
+          const starContainer = this.parentElement;
+          const currentRating = starContainer.getAttribute('data-current-rating') || 0;
+
+          // 恢复之前的选择
+          starContainer.querySelectorAll('i').forEach((s, index) => {
+            if (index < currentRating) {
+              s.classList.add('active');
+              s.classList.remove('far');
+              s.classList.add('fas');
+            } else {
+              s.classList.remove('active');
+              s.classList.remove('fas');
+              s.classList.add('far');
+            }
+          });
+        });
+
+        star.addEventListener('click', function () {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          const starContainer = this.parentElement;
+          const season = starContainer.getAttribute('data-season');
+
+          // 保存当前选择
+          starContainer.setAttribute('data-current-rating', rating);
+
+          // 更新显示的值
+          const ratingValue = starContainer.nextElementSibling;
+          ratingValue.textContent = `${rating}/5`;
+
+          // 保存到本地存储
+          localStorage.setItem(`${season}-rating`, rating);
+        });
+      });
+
+      // 加载保存的评分
+      document.querySelectorAll('.rating-stars').forEach(stars => {
+        const season = stars.getAttribute('data-season');
+        const savedRating = localStorage.getItem(`${season}-rating`);
+
+        if (savedRating) {
+          stars.setAttribute('data-current-rating', savedRating);
+          stars.nextElementSibling.textContent = `${savedRating}/5`;
+
+          // 高亮保存的星星
+          stars.querySelectorAll('i').forEach((star, index) => {
+            if (index < savedRating) {
+              star.classList.add('active');
+              star.classList.remove('far');
+              star.classList.add('fas');
+            }
+          });
+        }
+      });
+
+      // 保存文本反馈
+      document.querySelectorAll('.comment-box').forEach(textarea => {
+        const season = textarea.id.replace('-comment', '');
+        const savedComment = localStorage.getItem(`${season}-comment`);
+
+        if (savedComment) {
+          textarea.value = savedComment;
+        }
+
+        textarea.addEventListener('input', function () {
+          const season = this.id.replace('-comment', '');
+          localStorage.setItem(`${season}-comment`, this.value);
+        });
+      });
+
+      // 保存选择偏好
+      document.querySelectorAll('.preference-select').forEach(select => {
+        const season = select.id.replace('-preference', '');
+        const savedPreference = localStorage.getItem(`${season}-preference`);
+
+        if (savedPreference) {
+          select.value = savedPreference;
+        }
+
+        select.addEventListener('change', function () {
+          const season = this.id.replace('-preference', '');
+          localStorage.setItem(`${season}-preference`, this.value);
+        });
+      });
+
+      // 提交反馈
+      document.getElementById('submit-feedback').addEventListener('click', function () {
+        // 收集所有数据
+        const feedbackData = {
+          spring: {
+            rating: localStorage.getItem('spring-rating') || 0,
+            preference: localStorage.getItem('spring-preference') || '',
+            comment: localStorage.getItem('spring-comment') || ''
+          },
+          summer: {
+            rating: localStorage.getItem('summer-rating') || 0,
+            preference: localStorage.getItem('summer-preference') || '',
+            comment: localStorage.getItem('summer-comment') || ''
+          },
+          autumn: {
+            rating: localStorage.getItem('autumn-rating') || 0,
+            preference: localStorage.getItem('autumn-preference') || '',
+            comment: localStorage.getItem('autumn-comment') || ''
+          },
+          winter: {
+            rating: localStorage.getItem('winter-rating') || 0,
+            preference: localStorage.getItem('winter-preference') || '',
+            comment: localStorage.getItem('winter-comment') || ''
+          },
+          timestamp: new Date().toISOString()
+        };
+
+        // 在实际应用中，这里应该发送到服务器
+        console.log('提交的反馈数据:', feedbackData);
+
+        // 显示成功消息
+        alert('感谢您的反馈！您的偏好数据已成功提交。');
+
+        // 可选：清空本地存储
+        // localStorage.clear();
+
+        // 可选：重置表单
+        // document.querySelectorAll('.rating-stars').forEach(stars => {
+        //     stars.setAttribute('data-current-rating', 0);
+        //     stars.nextElementSibling.textContent = '0/5';
+        //     stars.querySelectorAll('i').forEach(star => {
+        //         star.classList.remove('active');
+        //         star.classList.remove('fas');
+        //         star.classList.add('far');
+        //     });
+        // });
+
+        // document.querySelectorAll('.comment-box').forEach(textarea => {
+        //     textarea.value = '';
+        // });
+
+        // document.querySelectorAll('.preference-select').forEach(select => {
+        //     select.value = '';
+        // });
+      });
+    });
+  </script>
+</body>
+
+</html>
